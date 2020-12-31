@@ -3,7 +3,6 @@ package com.proiect.ecommerce.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 //Adnotari mapare
@@ -12,7 +11,7 @@ import java.util.List;
 @Table(name = "users")
 //Generez un Sequeance number pentru a retine ultima valoare din
 //baza de date
-@SequenceGenerator(name = "user_seq",initialValue = 3, allocationSize = 1000)
+@SequenceGenerator(name = "user_seq",initialValue = 2, allocationSize = 1000)
 //Generez Getter si setters cu adnotarea lomboc, fara sa fiu nevoit sa le declar separat.
 @Data
 public class User {
@@ -28,12 +27,4 @@ public class User {
     private String parola;
     @Column(name = "telefon")
     private Integer telefon;
-
-    @OneToMany(mappedBy = "user")
-    private List<address> addresses;
-    @OneToMany(mappedBy = "comenzi")
-    private List<comenzi> comenzi;
-
-
-
 }

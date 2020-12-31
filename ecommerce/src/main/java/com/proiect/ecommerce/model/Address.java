@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "address")
 @SequenceGenerator(name = "address_seq", initialValue = 1,allocationSize = 1000)
 @Data
-public class address {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
     @Column(name = "id_adresa")

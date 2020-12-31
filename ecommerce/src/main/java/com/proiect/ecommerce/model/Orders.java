@@ -3,15 +3,14 @@ package com.proiect.ecommerce.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
 @Entity
-@Table(name = "comenzi")
-@SequenceGenerator(name="comenzi_seq",initialValue = 1,allocationSize = 1000)
+@Table(name = "orders")
+@SequenceGenerator(name="order_seq",initialValue = 1,allocationSize = 1000)
 @Data
-public class comenzi {
+public class Orders {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comenzi_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
     @Column(name = "id_order")
     private Integer id_order;
 
@@ -23,7 +22,4 @@ public class comenzi {
 
     @ManyToOne
     private User comenzi;
-
-
-
 }
