@@ -5,6 +5,8 @@ import com.proiect.ecommerce.model.User;
 import com.proiect.ecommerce.repository.Products_repo;
 import com.proiect.ecommerce.repository.Users_repo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +30,38 @@ public class UsersService {
     public User getUsers(Integer id)
     {
         return users_repo.findById(id).get();
+    }
+
+    //PostMapping - Crearea unei resurse user
+    public User createUser(@RequestBody User user)
+    {
+        return users_repo.save(user);
+    }
+    //PutMapping - modificarea completa a resursei dupa id
+    public User updateUser(@PathVariable("id") Integer id, @RequestBody User user)
+    {
+        user.setId(id);
+        return users_repo.save(user);
+    }
+    //PatchMapping - modificarea partiala a resursei
+    public User updatePatchUser(@PathVariable("id") Integer id, @RequestBody User user)
+    {
+        User newUser = users_repo.findById(id).get();
+        user.setId(id);
+        if(user.getEmail() != null)
+        {
+            newUser.setEmail(user.getEmail());
+        }
+        if(user.getParola() != null)
+        {
+            newUser.setParola(user.getParola());
+        }
+        if(user.getTelefon() != null)
+        {
+            newUser.setTelefon(user.getTelefon());
+        }
+
+
+        return users_repo.save(newUser);
     }
 }

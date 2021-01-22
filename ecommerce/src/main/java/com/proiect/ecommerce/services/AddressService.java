@@ -18,7 +18,7 @@ public class AddressService {
     {
         this.address_repo=address_repo;
     }
-
+    //Metoda care returneaza adresele
     public List<Address> getAllAddresses()
     {
         List<Address> addresses = new ArrayList<>();

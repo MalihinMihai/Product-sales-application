@@ -4,6 +4,7 @@ import com.proiect.ecommerce.model.Categories;
 import com.proiect.ecommerce.model.User;
 import com.proiect.ecommerce.repository.Categories_repo;
 import com.proiect.ecommerce.repository.Users_repo;
+import com.proiect.ecommerce.services.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,25 +18,24 @@ import java.util.List;
 
 public class categoriesController {
 
-    private final com.proiect.ecommerce.repository.Categories_repo categories_repo;
+    private CategoriesService categoriesService;
+    //Initializarea se face in controller
     @Autowired
-    public categoriesController (com.proiect.ecommerce.repository.Categories_repo categories_repo)
+    public categoriesController (CategoriesService categoriesService)
     {
-        this.categories_repo=categories_repo;
+        this.categoriesService=categoriesService;
     }
 
     //GetMapping pentru totate categoriile
     @GetMapping
     public List<Categories> getAllCategories(){
-        List<Categories> categories = new ArrayList<>();
-        categories_repo.findAll().forEach(g -> categories.add(g));
-        return categories;
+        return categoriesService.getAllCategories();
     }
 
-    //GetMapping dupa ID
+    //GetMapping pentru o singura categorie
     @GetMapping("/{id}")
     public Categories getAllCategoriesbyId(@PathVariable("id") Integer id)
     {
-        return this.categories_repo.findById(id).orElse(null);
+        return categoriesService.getCategories(id);
     }
 }

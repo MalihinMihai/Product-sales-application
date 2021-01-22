@@ -2,6 +2,7 @@ package com.proiect.ecommerce.controllers;
 
 import com.proiect.ecommerce.model.Products;
 import com.proiect.ecommerce.repository.Products_repo;
+import com.proiect.ecommerce.services.ProductsService;
 import lombok.experimental.PackagePrivate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,27 +17,25 @@ import java.util.List;
 @RequestMapping("/products")
 public class productsController {
 
-    private final Products_repo products_repo;
+    private ProductsService productsService;
 
     @Autowired
-    public productsController (Products_repo products_repo)
+    public productsController (ProductsService productsService)
     {
-        this.products_repo=products_repo;
+        this.productsService=productsService;
     }
 
     //GetMapping pentru toate produsele
     @GetMapping
     public List<Products> getAllProducts(){
-        List<Products> products = new ArrayList<>();
-        products_repo.findAll().forEach(g -> products.add(g));
-        return products;
+        return productsService.getAllProducts();
     }
 
     //GetMapping dupa ID
     @GetMapping("/{id}")
     public Products getAllProductsbyId(@PathVariable("id") Integer id)
     {
-        return this.products_repo.findById(id).orElse(null);
+        return productsService.getProducts(id);
     }
 
 

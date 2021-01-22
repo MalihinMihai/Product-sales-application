@@ -3,6 +3,7 @@ package com.proiect.ecommerce.controllers;
 import com.proiect.ecommerce.model.Orders;
 import com.proiect.ecommerce.model.Products;
 import com.proiect.ecommerce.repository.Orders_repo;
+import com.proiect.ecommerce.services.OrdersService;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,26 +18,24 @@ import java.util.List;
 @RequestMapping("/orders")
 public class ordersController {
 
-    private final Orders_repo orders_repo;
+    private OrdersService ordersService;
 
     @Autowired
-    public ordersController (Orders_repo orders_repo)
+    public ordersController (OrdersService ordersService)
     {
-        this.orders_repo=orders_repo;
+        this.ordersService=ordersService;
     }
     //GetMapping pentru toate comenzile
     @GetMapping
     public List<Orders> getAllOrders(){
-        List<Orders> orders = new ArrayList<>();
-        orders_repo.findAll().forEach(g -> orders.add(g));
-        return orders;
+        return ordersService.getAllOrders();
     }
 
     //GetMapping dupa ID
     @GetMapping("/{id}")
     public Orders getAllOrdersbyId(@PathVariable("id") Integer id)
     {
-        return this.orders_repo.findById(id).orElse(null);
+        return ordersService.getOrders(id);
     }
 
 
