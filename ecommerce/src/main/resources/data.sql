@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `address` (
+CREATE TABLE IF NOT EXISTS ecommerce_t.`address` (
                                          `id_adresa` int NOT NULL,
                                          `nume_complet` varchar(100) DEFAULT NULL,
     `adresa` varchar(100) DEFAULT NULL,
@@ -39,7 +39,7 @@ UNLOCK TABLES;
 
 
 
-CREATE TABLE IF NOT EXISTS  `cat_seq` (
+CREATE TABLE IF NOT EXISTS  ecommerce_t.`cat_seq` (
     `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
