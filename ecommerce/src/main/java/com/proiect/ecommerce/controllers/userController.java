@@ -23,35 +23,34 @@ public class userController {
         this.usersService=usersService;
     }
 
-    //GetMapping pentru toti userii
+    //GET
     @GetMapping
     public List<User> getAllUsers(){
         return usersService.getAllUsers();
     }
 
-    //GetMapping dupa ID
+    //GET dupa ID
     @GetMapping("/{id}")
     public User getAllUsersbyId(@PathVariable("id") Integer id)
     {
         return usersService.getUsers(id);
     }
 
-    //PostMapping - crearea unei resurse(user)
+    //POST
     @PostMapping
     public User createUser(@RequestBody User user)
     {
         return usersService.createUser(user);
     }
 
-    //PutMapping - modificarea completa a resursei dupa id
+    //PUT
     @PutMapping("/{id}")
     public User updateUser(@PathVariable("id") Integer id, @RequestBody User user)
     {
         return usersService.updateUser(id,user);
     }
 
-    //PatchMapping - modificarea partiala a resursei
-
+    //PATCH
     @PatchMapping("/{id}")
     public User updatePatchUser(@PathVariable("id") Integer id, @RequestBody User user)
     {

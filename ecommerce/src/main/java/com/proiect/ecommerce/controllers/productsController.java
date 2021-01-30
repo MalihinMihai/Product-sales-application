@@ -5,10 +5,7 @@ import com.proiect.ecommerce.repository.Products_repo;
 import com.proiect.ecommerce.services.ProductsService;
 import lombok.experimental.PackagePrivate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +22,23 @@ public class productsController {
         this.productsService=productsService;
     }
 
-    //GetMapping pentru toate produsele
+    //GET
     @GetMapping
     public List<Products> getAllProducts(){
         return productsService.getAllProducts();
     }
 
-    //GetMapping dupa ID
+    //GET dupa ID
     @GetMapping("/{id}")
     public Products getAllProductsbyId(@PathVariable("id") Integer id)
     {
         return productsService.getProducts(id);
+    }
+    //POST
+    @PostMapping
+    public Products createProduct(@RequestBody Products products)
+    {
+        return productsService.createProduct(products);
     }
 
 

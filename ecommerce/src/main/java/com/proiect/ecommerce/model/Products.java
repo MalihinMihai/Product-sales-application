@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
-@SequenceGenerator(name = "prod_seq",initialValue = 1, allocationSize = 1000)
+@SequenceGenerator(name = "prod_seq",initialValue = 2, allocationSize = 1000)
 @Data
 public class Products {
 
@@ -21,7 +21,7 @@ public class Products {
     @Column(name="pret")
     private Integer pret;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Categories categories;
 
 }

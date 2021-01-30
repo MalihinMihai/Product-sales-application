@@ -4,6 +4,7 @@ import com.proiect.ecommerce.model.Address;
 import com.proiect.ecommerce.model.Orders;
 import com.proiect.ecommerce.repository.Address_repo;
 import com.proiect.ecommerce.repository.Orders_repo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class OrdersService {
     private final Orders_repo orders_repo;
 
     //Initializare Repo
+    @Autowired
     public OrdersService (Orders_repo orders_repo)
     {
         this.orders_repo=orders_repo;

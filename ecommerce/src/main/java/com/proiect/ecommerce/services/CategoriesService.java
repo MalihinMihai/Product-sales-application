@@ -4,6 +4,7 @@ import com.proiect.ecommerce.model.Address;
 import com.proiect.ecommerce.model.Categories;
 import com.proiect.ecommerce.repository.Address_repo;
 import com.proiect.ecommerce.repository.Categories_repo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class CategoriesService {
     private final Categories_repo categories_repo;
 
     //Initializare Repo
+    @Autowired
     public CategoriesService (Categories_repo categories_repo)
     {
         this.categories_repo=categories_repo;

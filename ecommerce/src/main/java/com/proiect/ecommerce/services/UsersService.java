@@ -1,25 +1,25 @@
 package com.proiect.ecommerce.services;
 
-import com.proiect.ecommerce.model.Products;
 import com.proiect.ecommerce.model.User;
-import com.proiect.ecommerce.repository.Products_repo;
 import com.proiect.ecommerce.repository.Users_repo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 public class UsersService {
 
     private final Users_repo users_repo;
-    //Initializare Repo
+
+    @Autowired
     public UsersService (Users_repo users_repo)
     {
         this.users_repo=users_repo;
     }
-
+    //Metoda GET
     public List<User> getAllUsers()
     {
         List<User> users = new ArrayList<>();
@@ -27,6 +27,7 @@ public class UsersService {
         return users;
     }
 
+    //Metoda GetById
     public User getUsers(Integer id)
     {
         return users_repo.findById(id).get();
@@ -37,12 +38,14 @@ public class UsersService {
     {
         return users_repo.save(user);
     }
+
     //PutMapping - modificarea completa a resursei dupa id
     public User updateUser(@PathVariable("id") Integer id, @RequestBody User user)
     {
         user.setId(id);
         return users_repo.save(user);
     }
+
     //PatchMapping - modificarea partiala a resursei
     public User updatePatchUser(@PathVariable("id") Integer id, @RequestBody User user)
     {
@@ -60,7 +63,6 @@ public class UsersService {
         {
             newUser.setTelefon(user.getTelefon());
         }
-
 
         return users_repo.save(newUser);
     }
