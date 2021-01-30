@@ -20,6 +20,10 @@ public class Products {
     private String descriere;
     @Column(name="pret")
     private Integer pret;
+    @Column(name="dimensiune")
+    private String dimensiune;
+    @Column(name="culoare")
+    private String culoare;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Categories categories;

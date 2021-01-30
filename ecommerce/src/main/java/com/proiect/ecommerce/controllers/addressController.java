@@ -1,10 +1,10 @@
 package com.proiect.ecommerce.controllers;
 
 import com.proiect.ecommerce.model.Address;
+import com.proiect.ecommerce.model.User;
 import com.proiect.ecommerce.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,15 +17,23 @@ public class addressController {
     {
         this.addressService=addressService;
     }
-    //Obtinere lista de adrese.
+    //GET
+    @GetMapping
     public List<Address> getAllAddresses()
     {
         return addressService.getAllAddresses();
     }
-
-    //Obtinere adresa dupa ID
+    //GET dupa ID
+    @GetMapping("/{id}")
     public Address getAddresses(Integer id)
     {
         return addressService.getAddresses(id);
+    }
+
+    //POST
+    @PostMapping
+    public Address createAddress(@RequestBody Address address)
+    {
+        return addressService.createAddress(address);
     }
 }

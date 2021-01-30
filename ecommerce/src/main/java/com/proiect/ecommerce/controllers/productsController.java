@@ -1,6 +1,7 @@
 package com.proiect.ecommerce.controllers;
 
 import com.proiect.ecommerce.model.Products;
+import com.proiect.ecommerce.model.User;
 import com.proiect.ecommerce.repository.Products_repo;
 import com.proiect.ecommerce.services.ProductsService;
 import lombok.experimental.PackagePrivate;
@@ -39,6 +40,24 @@ public class productsController {
     public Products createProduct(@RequestBody Products products)
     {
         return productsService.createProduct(products);
+    }
+    //PUT
+    @PutMapping("/{id}")
+    public Products updateProduct(@PathVariable("id") Integer id, @RequestBody Products products)
+    {
+        return productsService.updateProduct(products);
+    }
+    //PATCH
+    @PatchMapping("/{id}")
+    public Products updatePatchProduct(@PathVariable("id") Integer id, @RequestBody Products products)
+    {
+        return productsService.updatePatchProduct(id,products);
+    }
+    //DELETE
+    @DeleteMapping("/{id}")
+    public void DeleteProduct(@PathVariable("id") Integer id)
+    {
+        productsService.DeleteProduct(id);
     }
 
 

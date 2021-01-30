@@ -8,6 +8,7 @@ import com.proiect.ecommerce.repository.Address_repo;
 import com.proiect.ecommerce.repository.Products_repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
@@ -42,4 +43,50 @@ public class ProductsService {
     {
         return products_repo.save(products);
     }
+
+    //PUT
+    public Products updateProduct(@RequestBody Products products)
+    {
+        products.setId_produs(products.getId_produs());
+        return products_repo.save(products);
+    }
+    //PATCH
+    public Products updatePatchProduct(@PathVariable("id") Integer id, @RequestBody Products products)
+    {
+        Products newProduct = products_repo.findById(id).get();
+        products.setId_produs(id);
+        if(products.getNume() != null)
+        {
+            newProduct.setNume(products.getNume());
+        }
+        if(products.getDescriere() != null)
+        {
+            newProduct.setDescriere(products.getDescriere());
+        }
+        if(products.getPret() != null)
+        {
+            newProduct.setPret(products.getPret());
+        }
+        if(products.getCategories() != null)
+        {
+            newProduct.setCategories(products.getCategories());
+        }
+        if(products.getCuloare() !=null)
+        {
+            newProduct.setCuloare(products.getCuloare());
+        }
+        if(products.getDimensiune() != null)
+        {
+            newProduct.setDimensiune(products.getDimensiune());
+        }
+
+        return products_repo.save(newProduct);
+    }
+
+    //DELETE by ID
+    public void DeleteProduct(@PathVariable("id") Integer id)
+    {
+       products_repo.deleteById(id);
+    }
+
 }

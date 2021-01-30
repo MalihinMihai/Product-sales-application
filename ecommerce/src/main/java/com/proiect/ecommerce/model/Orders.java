@@ -17,9 +17,6 @@ public class Orders {
     @Column( name = "cantitate")
     private Integer cantitate;
 
-    @Column(name = "status_comanda")
-    private String status_c;
-
     @ManyToOne
     private User comenzi;
 }

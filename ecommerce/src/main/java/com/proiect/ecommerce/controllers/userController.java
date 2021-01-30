@@ -56,4 +56,11 @@ public class userController {
     {
        return usersService.updatePatchUser(id,user);
     }
+
+    //DELETE
+    @DeleteMapping("/{id}")
+    public void DeleteUser(@PathVariable("id") Integer id)
+    {
+        usersService.DeleteUser(id);
+    }
 }

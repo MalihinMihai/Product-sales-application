@@ -66,4 +66,9 @@ public class UsersService {
 
         return users_repo.save(newUser);
     }
+    //DELETE by ID
+    public void DeleteUser(@PathVariable("id") Integer id)
+    {
+        users_repo.deleteById(id);
+    }
 }

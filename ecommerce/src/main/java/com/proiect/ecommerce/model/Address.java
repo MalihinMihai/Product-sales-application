@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "address")
-@SequenceGenerator(name = "address_seq", initialValue = 1,allocationSize = 1000)
+@SequenceGenerator(name = "address_seq", initialValue = 2,allocationSize = 1000)
 @Data
 public class Address {
     @Id

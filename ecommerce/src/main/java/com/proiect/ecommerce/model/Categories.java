@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-@SequenceGenerator(name = "cat_seq",initialValue = 1, allocationSize = 5)
+@SequenceGenerator(name = "cat_seq",initialValue = 2, allocationSize = 5)
 @Data
 public class Categories {
     @Id
