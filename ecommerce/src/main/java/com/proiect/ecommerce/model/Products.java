@@ -25,7 +25,7 @@ public class Products {
     @Column(name="culoare")
     private String culoare;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade=CascadeType.DETACH)
     private Categories categories;
 
 }

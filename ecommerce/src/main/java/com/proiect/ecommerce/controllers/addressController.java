@@ -1,6 +1,7 @@
 package com.proiect.ecommerce.controllers;
 
 import com.proiect.ecommerce.model.Address;
+import com.proiect.ecommerce.model.Categories;
 import com.proiect.ecommerce.model.User;
 import com.proiect.ecommerce.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,26 @@ public class addressController {
     public Address createAddress(@RequestBody Address address)
     {
         return addressService.createAddress(address);
+    }
+
+    //PUT
+    @PutMapping("/{id}")
+    public Address updateAddress(@PathVariable("id") Integer id, @RequestBody Address address)
+    {
+        return addressService.updateAddress(id,address);
+    }
+
+    //PATCH
+    @PatchMapping("/{id}")
+    public Address updatePatchAddress(@PathVariable("id") Integer id, @RequestBody Address address)
+    {
+        return addressService.updatePatchAddress(id,address);
+    }
+
+    //DELETE
+    @DeleteMapping("/{id}")
+    public void DeleteAddress(@PathVariable("id") Integer id)
+    {
+        addressService.DeleteAddress(id);
     }
 }

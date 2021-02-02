@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 @Entity
 @Table(name = "orders")
-@SequenceGenerator(name="order_seq",initialValue = 1,allocationSize = 1000)
+@SequenceGenerator(name="order_seq",initialValue = 2,allocationSize = 1000)
 @Data
 public class Orders {
 

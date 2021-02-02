@@ -1,9 +1,8 @@
 package com.proiect.ecommerce.controllers;
 
-import com.proiect.ecommerce.model.Products;
+
 import com.proiect.ecommerce.model.User;
-import com.proiect.ecommerce.repository.Products_repo;
-import com.proiect.ecommerce.repository.Users_repo;
+
 import com.proiect.ecommerce.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -63,4 +62,6 @@ public class userController {
     {
         usersService.DeleteUser(id);
     }
+
+
 }
